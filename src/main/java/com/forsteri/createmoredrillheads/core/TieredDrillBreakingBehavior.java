@@ -1,18 +1,25 @@
 package com.forsteri.createmoredrillheads.core;
 
-import com.jozufozu.flywheel.api.MaterialManager;
-import com.jozufozu.flywheel.core.virtual.VirtualRenderWorld;
+import com.simibubi.create.AllTags;
 import com.simibubi.create.content.contraptions.behaviour.MovementContext;
-import com.simibubi.create.content.contraptions.render.ActorInstance;
+import com.simibubi.create.content.contraptions.render.ActorVisual;
 import com.simibubi.create.content.contraptions.render.ContraptionMatrices;
-import com.simibubi.create.content.contraptions.render.ContraptionRenderDispatcher;
+import com.simibubi.create.content.kinetics.base.BlockBreakingMovementBehaviour;
 import com.simibubi.create.content.kinetics.drill.DrillMovementBehaviour;
+import com.simibubi.create.foundation.damageTypes.CreateDamageSources;
 import com.simibubi.create.foundation.utility.BlockHelper;
+import com.simibubi.create.foundation.virtualWorld.VirtualRenderWorld;
+
+import dev.engine_room.flywheel.api.visualization.VisualizationContext;
+import dev.engine_room.flywheel.api.visualization.VisualizationManager;
+import net.createmod.catnip.math.VecHelper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.TierSortingRegistry;
@@ -33,14 +40,14 @@ public class TieredDrillBreakingBehavior extends DrillMovementBehaviour {
     @OnlyIn(value = Dist.CLIENT)
     public void renderInContraption(MovementContext context, VirtualRenderWorld renderWorld,
         ContraptionMatrices matrices, MultiBufferSource buffer) {
-        if (!ContraptionRenderDispatcher.canInstance())
+        if (!VisualizationManager.supportsVisualization(context.world))
             TieredDrillRenderer.renderInContraption(context, renderWorld, matrices, buffer);
     }
 
     @Nullable
     @Override
-    public ActorInstance createInstance(MaterialManager materialManager, VirtualRenderWorld simulationWorld, MovementContext context) {
-        return new TieredDrillActorInstance(materialManager, simulationWorld, context);
+    public ActorVisual createVisual(VisualizationContext visualizationContext, VirtualRenderWorld simulationWorld, MovementContext context) {
+        return new TieredDrillActorVisual(visualizationContext, simulationWorld, context);
     }
 
     @Override

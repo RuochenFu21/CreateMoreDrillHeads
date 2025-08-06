@@ -2,7 +2,7 @@ package com.forsteri.createmoredrillheads.core;
 
 import com.simibubi.create.content.kinetics.drill.DrillBlockEntity;
 import com.simibubi.create.foundation.utility.BlockHelper;
-import com.simibubi.create.foundation.utility.VecHelper;
+import net.createmod.catnip.math.VecHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Tier;
