@@ -1,6 +1,5 @@
 package com.forsteri.createmoredrillheads.core;
 
-import com.simibubi.create.AllTags;
 import com.simibubi.create.content.contraptions.behaviour.MovementContext;
 import com.simibubi.create.content.contraptions.render.ActorVisual;
 import com.simibubi.create.content.contraptions.render.ContraptionMatrices;

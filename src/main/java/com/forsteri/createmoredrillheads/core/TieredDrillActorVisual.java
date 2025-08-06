@@ -1,7 +1,6 @@
 package com.forsteri.createmoredrillheads.core;
 
 import com.forsteri.createmoredrillheads.core.TieredDrillBlock;
-import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.contraptions.behaviour.MovementContext;
 import com.simibubi.create.content.contraptions.render.ActorVisual;
 import com.simibubi.create.foundation.virtualWorld.VirtualRenderWorld;
@@ -32,7 +31,7 @@ public class TieredDrillActorVisual extends ActorVisual {
 
         facing = state.getValue(TieredDrillBlock.FACING);
 
-		drillHead = instancerProvider.instancer(InstanceTypes.TRANSFORMED, Models.partial(AllPartialModels.DRILL_HEAD))
+		drillHead = instancerProvider.instancer(InstanceTypes.TRANSFORMED, Models.partial(DrillTierRegisterer.getHead(state)))
 			.createInstance();
     }
 
@@ -42,7 +41,7 @@ public class TieredDrillActorVisual extends ActorVisual {
 
 		if (context.disabled
 			|| VecHelper.isVecPointingTowards(context.relativeMotion, facing.getOpposite()))
-			return;
+			return; 
 
 		float deg = context.getAnimationSpeed();
 

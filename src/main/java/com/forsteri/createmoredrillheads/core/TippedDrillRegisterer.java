@@ -1,7 +1,6 @@
 package com.forsteri.createmoredrillheads.core;
 
 import com.forsteri.createmoredrillheads.CreateMoreDrillHeads;
-import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.content.kinetics.base.OrientedRotatingVisual;
@@ -53,7 +52,7 @@ public class TippedDrillRegisterer {
                 .transform(axeOrPickaxe())
                 .blockstate(
                         (c, p) -> p.directionalBlock(c.get(), $ -> p.models()
-                                .getExistingFile(new ResourceLocation("createmocom.simibubi.create.foundation.utilityredrillheads", "block/abstract/block")))
+                                .getExistingFile(new ResourceLocation("createmoredrillheads", "block/abstract/block")))
                 )
                 .onRegister(block -> BlockStressValues.IMPACTS.register(block, () -> (4.0 / 6.0 * tier.getSpeed())))
                 .onRegister(movementBehaviour(new TieredDrillBreakingBehavior(tier, tip)))
