@@ -1,7 +1,7 @@
 package com.forsteri.createmoredrillheads.core;
 
 import com.forsteri.createmoredrillheads.entry.TieredDrillRegistration;
-import com.jozufozu.flywheel.core.PartialModel;
+import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;

@@ -1,12 +1,13 @@
 package com.forsteri.createmoredrillheads.core;
 
 import com.forsteri.createmoredrillheads.CreateMoreDrillHeads;
-import com.jozufozu.flywheel.core.PartialModel;
 import com.simibubi.create.AllTags;
-import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.api.stress.BlockStressValues;
+import com.simibubi.create.content.kinetics.base.OrientedRotatingVisual;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tiers;
@@ -19,7 +20,7 @@ import net.minecraftforge.client.model.generators.ModelBuilder;
 import net.minecraftforge.fml.DistExecutor;
 
 import static com.forsteri.createmoredrillheads.entry.TieredDrillRegistration.REGISTRATE;
-import static com.simibubi.create.AllMovementBehaviours.movementBehaviour;
+import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
 
 public class TippedDrillRegisterer {
@@ -42,7 +43,7 @@ public class TippedDrillRegisterer {
     private final BlockEntityEntry<TieredDrillBlockEntity> tile;
 
     public TippedDrillRegisterer(String name, Tiers tier, DrillTips tip) {
-        head = new PartialModel(new ResourceLocation(CreateMoreDrillHeads.MOD_ID, "block/" + name + "/head"));
+        head = PartialModel.of(new ResourceLocation(CreateMoreDrillHeads.MOD_ID, "block/" + name + "/head"));
 
         block = REGISTRATE.block(name, (BlockBehaviour.Properties properties) ->
                         new TieredDrillBlock(properties, tier, name, this::getTile))
@@ -53,7 +54,7 @@ public class TippedDrillRegisterer {
                         (c, p) -> p.directionalBlock(c.get(), $ -> p.models()
                                 .getExistingFile(new ResourceLocation("createmoredrillheads", "block/abstract/block")))
                 )
-                .transform(BlockStressDefaults.setImpact(4.0 / 6.0 * tier.getSpeed()))
+                .onRegister(block -> BlockStressValues.IMPACTS.register(block, () -> (4.0 / 6.0 * tier.getSpeed())))
                 .onRegister(movementBehaviour(new TieredDrillBreakingBehavior(tier, tip)))
                 .item()
                 .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
@@ -76,7 +77,7 @@ public class TippedDrillRegisterer {
         var unregistered = REGISTRATE.blockEntity(
                         name, (BlockEntityType<TieredDrillBlockEntity> type, BlockPos pos, BlockState state) ->
                                 new TieredDrillBlockEntity(type, pos, state, tier, tip))
-                .instance(() -> (m, tile) -> new TieredDrillInstance(m, tile, head), false)
+                .visual(() -> OrientedRotatingVisual.of(head), false)
                 .validBlock(block);
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> RendererLoader.addRenderer(unregistered, head));
