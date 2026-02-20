@@ -4,21 +4,15 @@ import com.forsteri.createmoredrillheads.entry.TieredDrillLang;
 import com.forsteri.createmoredrillheads.entry.TieredDrillRegistration;
 import com.forsteri.createmoredrillheads.entry.TieredDrillTab;
 import com.simibubi.create.foundation.data.CreateRegistrate;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(CreateMoreDrillHeads.MOD_ID)
 public class CreateMoreDrillHeads {
 
     public static final String MOD_ID = "createmoredrillheads";
 
-    public CreateMoreDrillHeads() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get()
-                .getModEventBus();
-
-
+    public CreateMoreDrillHeads(IEventBus modEventBus) {
         REGISTRATE.registerEventListeners(modEventBus);
 
         TieredDrillTab.register(modEventBus);

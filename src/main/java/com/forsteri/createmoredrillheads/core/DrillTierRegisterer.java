@@ -4,7 +4,7 @@ import com.forsteri.createmoredrillheads.entry.TieredDrillRegistration;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.registries.ForgeRegistries;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -22,7 +22,7 @@ public class TieredDrillRegistration {
     static {
         for (String material : new String[] {"quartz", "emerald", "amethyst"})
             REGISTRATE.item(material + "_dusts", Item::new)
-                    .tag(ItemTags.create(new ResourceLocation("forge", "dusts/" + material)))
+                    .tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dusts/" + material)))
                     .register();
 
 

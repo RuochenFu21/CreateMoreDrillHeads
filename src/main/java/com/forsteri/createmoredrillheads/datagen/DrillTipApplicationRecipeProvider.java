@@ -44,6 +44,6 @@ public class DrillTipApplicationRecipeProvider extends ProcessingRecipeGen {
 
     <T extends ProcessingRecipe<?>> void create(String name,
                                                 UnaryOperator<ProcessingRecipeBuilder<T>> transform) {
-        create(new ResourceLocation(CreateMoreDrillHeads.MOD_ID, name), transform);
+        create(ResourceLocation.fromNamespaceAndPath(CreateMoreDrillHeads.MOD_ID, name), transform);
     }
 }

@@ -2,9 +2,9 @@ package com.forsteri.createmoredrillheads.datagen;
 
 import com.forsteri.createmoredrillheads.CreateMoreDrillHeads;
 import net.minecraft.data.DataGenerator;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.data.event.GatherDataEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = CreateMoreDrillHeads.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class TieredDrillDataGen {

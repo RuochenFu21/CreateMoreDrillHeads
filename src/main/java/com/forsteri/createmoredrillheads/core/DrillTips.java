@@ -7,7 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraftforge.common.Tags;
+import net.neoforged.common.Tags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
@@ -19,18 +19,18 @@ public enum DrillTips {
         stack.enchant(Enchantments.BLOCK_FORTUNE, 1);
         return stack;
     }),
-    FORTUNE_II("quartz_dusts", ItemTags.create(new ResourceLocation("forge", "dusts/quartz")),
+    FORTUNE_II("quartz_dusts", ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dusts/quartz")),
              () -> {
         ItemStack stack = Items.STICK.getDefaultInstance();
         stack.enchant(Enchantments.BLOCK_FORTUNE, 2);
         return stack;
     }),
-    FORTUNE_III("emerald_dusts", ItemTags.create(new ResourceLocation("forge", "dusts/emerald")),() -> {
+    FORTUNE_III("emerald_dusts", ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dusts/emerald")),() -> {
         ItemStack stack = Items.STICK.getDefaultInstance();
         stack.enchant(Enchantments.BLOCK_FORTUNE, 3);
         return stack;
     }),
-    SILK_TOUCH("amethyst_dusts", ItemTags.create(new ResourceLocation("forge", "dusts/amethyst")), () -> {
+    SILK_TOUCH("amethyst_dusts", ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dusts/amethyst")), () -> {
         ItemStack stack = Items.AIR.getDefaultInstance();
         stack.enchant(Enchantments.SILK_TOUCH, 1);
         return stack;

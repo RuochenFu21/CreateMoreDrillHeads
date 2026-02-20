@@ -10,7 +10,7 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.TierSortingRegistry;
+import net.neoforged.common.TierSortingRegistry;
 
 public class TieredDrillBlockEntity extends DrillBlockEntity {
     public final Tier tier;

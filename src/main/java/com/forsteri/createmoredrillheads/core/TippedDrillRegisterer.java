@@ -15,9 +15,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.model.generators.ModelBuilder;
-import net.minecraftforge.fml.DistExecutor;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.client.model.generators.ModelBuilder;
+import net.neoforged.fml.DistExecutor;
 
 import static com.forsteri.createmoredrillheads.entry.TieredDrillRegistration.REGISTRATE;
 import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
@@ -43,7 +43,7 @@ public class TippedDrillRegisterer {
     private final BlockEntityEntry<TieredDrillBlockEntity> tile;
 
     public TippedDrillRegisterer(String name, Tiers tier, DrillTips tip) {
-        head = PartialModel.of(new ResourceLocation(CreateMoreDrillHeads.MOD_ID, "block/" + name + "/head"));
+        head = PartialModel.of(ResourceLocation.fromNamespaceAndPath(CreateMoreDrillHeads.MOD_ID, "block/" + name + "/head"));
 
         block = REGISTRATE.block(name, (BlockBehaviour.Properties properties) ->
                         new TieredDrillBlock(properties, tier, name, this::getTile))
@@ -52,7 +52,7 @@ public class TippedDrillRegisterer {
                 .transform(axeOrPickaxe())
                 .blockstate(
                         (c, p) -> p.directionalBlock(c.get(), $ -> p.models()
-                                .getExistingFile(new ResourceLocation("createmoredrillheads", "block/abstract/block")))
+                                .getExistingFile(ResourceLocation.fromNamespaceAndPath("createmoredrillheads", "block/abstract/block")))
                 )
                 .onRegister(block -> BlockStressValues.IMPACTS.register(block, () -> (4.0 / 6.0 * tier.getSpeed())))
                 .onRegister(movementBehaviour(new TieredDrillBreakingBehavior(tier, tip)))
@@ -61,11 +61,11 @@ public class TippedDrillRegisterer {
                 .model((c, p) -> {
                     ResourceLocation itemParent, headParent;
                     if (tip == DrillTips.NONE) {
-                        itemParent = new ResourceLocation("createmoredrillheads", "block/abstract/abstract_tiered_drill_item");
-                        headParent = new ResourceLocation("createmoredrillheads", "block/abstract/head");
+                        itemParent = ResourceLocation.fromNamespaceAndPath("createmoredrillheads", "block/abstract/abstract_tiered_drill_item");
+                        headParent = ResourceLocation.fromNamespaceAndPath("createmoredrillheads", "block/abstract/head");
                     } else {
-                        itemParent = new ResourceLocation("createmoredrillheads", "block/abstract/abstract_tipped_tiered_drill_item");
-                        headParent = new ResourceLocation("createmoredrillheads", "block/abstract/abstract_tipped_tiered_drill_head");
+                        itemParent = ResourceLocation.fromNamespaceAndPath("createmoredrillheads", "block/abstract/abstract_tipped_tiered_drill_item");
+                        headParent = ResourceLocation.fromNamespaceAndPath("createmoredrillheads", "block/abstract/abstract_tipped_tiered_drill_head");
                     }
 
                     buildModel(p.withExistingParent(c.getName(), itemParent), tier, tip);
