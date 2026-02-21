@@ -10,7 +10,6 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.common.TierSortingRegistry;
 
 public class TieredDrillBlockEntity extends DrillBlockEntity {
     public final Tier tier;
@@ -30,7 +29,7 @@ public class TieredDrillBlockEntity extends DrillBlockEntity {
     public boolean canBreak(BlockState stateToBreak, float blockHardness) {
         return
                 isBreakable(stateToBreak, blockHardness)
-                        && TierSortingRegistry.isCorrectTierForDrops(tier, stateToBreak);
+                        && !stateToBreak.is(tier.getIncorrectBlocksForDrops());
     }
 
     @Override

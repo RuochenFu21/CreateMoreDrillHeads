@@ -8,16 +8,18 @@ import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.foundation.data.recipe.ProcessingRecipeGen;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tiers;
 
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.UnaryOperator;
 
 public class DrillTipApplicationRecipeProvider extends ProcessingRecipeGen {
-    public DrillTipApplicationRecipeProvider(PackOutput p_125973_) {
-        super(p_125973_);
+    public DrillTipApplicationRecipeProvider(PackOutput p_125973_, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(p_125973_, lookupProvider);
     }
 
     @Override

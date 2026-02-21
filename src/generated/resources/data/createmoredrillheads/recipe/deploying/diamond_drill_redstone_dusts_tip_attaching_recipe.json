@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "createmoredrillheads:diamond_drill"
+    },
+    {
+      "tag": "c:dusts/redstone"
+    }
+  ],
+  "results": [
+    {
+      "id": "createmoredrillheads:redstone_dusts_tipped_diamond_drill"
+    }
+  ]
+}

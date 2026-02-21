@@ -1,0 +1,15 @@
+[21Feb2026 00:42:23.311] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, 21.1.133, --assetIndex, asset-index, --assetsDir, /Users/furuochen/.gradle/caches/minecraft/assets, --gameDir, ., --fml.neoForgeVersion, 21.1.133, --fml.fmlVersion, 4.0.38, --fml.mcVersion, 1.21.1, --fml.neoFormVersion, 20240808.144430]
+[21Feb2026 00:42:23.312] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.10+7-LTS
+[21Feb2026 00:42:23.312] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.4+main.d2e20e43 starting: java version 21.0.10 by Eclipse Adoptium; OS Mac OS X arch aarch64 version 14.7.5
+[21Feb2026 00:42:23.367] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[21Feb2026 00:42:24.220] [main/ERROR] [EARLYDISPLAY/]: Failed to find a primary monitor - this means LWJGL isn't working properly
+[21Feb2026 00:42:24.220] [main/ERROR] [EARLYDISPLAY/]: ERROR DISPLAY
+Failed to initialize the mod loading system and display.
+
+
+Failure details:
+Failed to locate a primary monitor.
+glfwGetPrimaryMonitor failed.
+
+
+If you click yes, we will try and open https://links.neoforged.net/early-display-errors in your default browser

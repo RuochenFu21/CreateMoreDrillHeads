@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "createmoredrillheads:iron_drill"
+    },
+    {
+      "tag": "c:dusts/emerald"
+    }
+  ],
+  "results": [
+    {
+      "id": "createmoredrillheads:emerald_dusts_tipped_iron_drill"
+    }
+  ]
+}

@@ -3,25 +3,18 @@ package com.forsteri.createmoredrillheads.core;
 import com.simibubi.create.content.contraptions.behaviour.MovementContext;
 import com.simibubi.create.content.contraptions.render.ActorVisual;
 import com.simibubi.create.content.contraptions.render.ContraptionMatrices;
-import com.simibubi.create.content.kinetics.base.BlockBreakingMovementBehaviour;
 import com.simibubi.create.content.kinetics.drill.DrillMovementBehaviour;
-import com.simibubi.create.foundation.damageTypes.CreateDamageSources;
 import com.simibubi.create.foundation.utility.BlockHelper;
 import com.simibubi.create.foundation.virtualWorld.VirtualRenderWorld;
-
 import dev.engine_room.flywheel.api.visualization.VisualizationContext;
 import dev.engine_room.flywheel.api.visualization.VisualizationManager;
-import net.createmod.catnip.math.VecHelper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.neoforged.common.TierSortingRegistry;
 
 import javax.annotation.Nullable;
 
@@ -57,7 +50,7 @@ public class TieredDrillBreakingBehavior extends DrillMovementBehaviour {
     @Override
     public boolean canBreak(Level world, BlockPos breakingPos, BlockState state) {
         return super.canBreak(world, breakingPos, state)
-                && TierSortingRegistry.isCorrectTierForDrops(tier, state);
+                && !state.is(tier.getIncorrectBlocksForDrops());
     }
 
     @Override

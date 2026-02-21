@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+
+[[mods]]
+    modId="createmoredrillheads"
+    version="${mod_version}"
+    displayName="Create: More Drill Heads"
+    authors="${mod_authors}"
+    description="${mod_description}"
+
+[[dependencies.createmoredrillheads]]
+    modId="neoforge"
+    type="required"
+    versionRange="${neo_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.createmoredrillheads]]
+    modId="create"
+    type="required"
+    versionRange="[0.6.0,)"
+    ordering="AFTER"
+    side="BOTH"

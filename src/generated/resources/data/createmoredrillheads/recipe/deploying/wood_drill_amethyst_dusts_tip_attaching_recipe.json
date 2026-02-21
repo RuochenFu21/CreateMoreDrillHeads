@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "createmoredrillheads:wooden_drill"
+    },
+    {
+      "tag": "c:dusts/amethyst"
+    }
+  ],
+  "results": [
+    {
+      "id": "createmoredrillheads:amethyst_dusts_tipped_wooden_drill"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "createmoredrillheads:netherite_drill"
+    },
+    {
+      "tag": "c:dusts/redstone"
+    }
+  ],
+  "results": [
+    {
+      "id": "createmoredrillheads:redstone_dusts_tipped_netherite_drill"
+    }
+  ]
+}

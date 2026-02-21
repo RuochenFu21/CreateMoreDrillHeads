@@ -1,0 +1,39 @@
+[21Feb2026 00:42:23.311] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, 21.1.133, --assetIndex, asset-index, --assetsDir, /Users/furuochen/.gradle/caches/minecraft/assets, --gameDir, ., --fml.neoForgeVersion, 21.1.133, --fml.fmlVersion, 4.0.38, --fml.mcVersion, 1.21.1, --fml.neoFormVersion, 20240808.144430]
+[21Feb2026 00:42:23.312] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.10+7-LTS
+[21Feb2026 00:42:23.312] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.4+main.d2e20e43 starting: java version 21.0.10 by Eclipse Adoptium; OS Mac OS X arch aarch64 version 14.7.5
+[21Feb2026 00:42:23.322] [main/DEBUG] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Found launch services [minecraft,forgeclient,forgedatauserdev,testharness,forgeserverdev,forgeserveruserdev,forgejunitdev,forgeclientdev,forgeclientuserdev,forgeserver,forgejunituserdev,forgedatadev]
+[21Feb2026 00:42:23.333] [main/DEBUG] [cpw.mods.modlauncher.LaunchPluginHandler/MODLAUNCHER]: Found launch plugins: [mixin,slf4jfixer,runtime_enum_extender,accesstransformer,runtimedistcleaner]
+[21Feb2026 00:42:23.338] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Discovering transformation services
+[21Feb2026 00:42:23.342] [main/DEBUG] [net.neoforged.fml.loading.FMLPaths/CORE]: Path GAMEDIR is /Users/furuochen/.openclaw/workspace/projects/CreateMoreDrillHeads/runs/client
+[21Feb2026 00:42:23.342] [main/DEBUG] [net.neoforged.fml.loading.FMLPaths/CORE]: Path MODSDIR is /Users/furuochen/.openclaw/workspace/projects/CreateMoreDrillHeads/runs/client/mods
+[21Feb2026 00:42:23.342] [main/DEBUG] [net.neoforged.fml.loading.FMLPaths/CORE]: Path CONFIGDIR is /Users/furuochen/.openclaw/workspace/projects/CreateMoreDrillHeads/runs/client/config
+[21Feb2026 00:42:23.342] [main/DEBUG] [net.neoforged.fml.loading.FMLPaths/CORE]: Path FMLCONFIG is /Users/furuochen/.openclaw/workspace/projects/CreateMoreDrillHeads/runs/client/config/fml.toml
+[21Feb2026 00:42:23.358] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: Loaded FML config from /Users/furuochen/.openclaw/workspace/projects/CreateMoreDrillHeads/runs/client/config/fml.toml
+[21Feb2026 00:42:23.358] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig disableConfigWatcher is false
+[21Feb2026 00:42:23.358] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig earlyWindowControl is true
+[21Feb2026 00:42:23.358] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig maxThreads is 8
+[21Feb2026 00:42:23.358] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig versionCheck is true
+[21Feb2026 00:42:23.358] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig defaultConfigPath is defaultconfigs
+[21Feb2026 00:42:23.358] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig disableOptimizedDFU is true
+[21Feb2026 00:42:23.358] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig earlyWindowProvider is fmlearlywindow
+[21Feb2026 00:42:23.358] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig earlyWindowWidth is 854
+[21Feb2026 00:42:23.358] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig earlyWindowHeight is 480
+[21Feb2026 00:42:23.358] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig earlyWindowFBScale is 1
+[21Feb2026 00:42:23.359] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig earlyWindowMaximized is false
+[21Feb2026 00:42:23.359] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig earlyWindowSkipGLVersions is []
+[21Feb2026 00:42:23.359] [main/TRACE] [net.neoforged.fml.loading.FMLConfig/CORE]: FMLConfig earlyWindowSquir is false
+[21Feb2026 00:42:23.363] [main/DEBUG] [net.neoforged.fml.loading.targets.CommonLaunchHandler/CORE]: Got mod coordinates CreateMoreDrillHeads%%/Users/furuochen/.openclaw/workspace/projects/CreateMoreDrillHeads/build/resources/main:CreateMoreDrillHeads%%/Users/furuochen/.openclaw/workspace/projects/CreateMoreDrillHeads/build/classes/java/main from env
+[21Feb2026 00:42:23.364] [main/DEBUG] [net.neoforged.fml.loading.targets.CommonLaunchHandler/CORE]: Found supplied mod coordinates [{CreateMoreDrillHeads=[/Users/furuochen/.openclaw/workspace/projects/CreateMoreDrillHeads/build/resources/main, /Users/furuochen/.openclaw/workspace/projects/CreateMoreDrillHeads/build/classes/java/main]}]
+[21Feb2026 00:42:23.365] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found additional transformation services from discovery services: 
+[21Feb2026 00:42:23.367] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[21Feb2026 00:42:24.220] [main/ERROR] [EARLYDISPLAY/]: Failed to find a primary monitor - this means LWJGL isn't working properly
+[21Feb2026 00:42:24.220] [main/ERROR] [EARLYDISPLAY/]: ERROR DISPLAY
+Failed to initialize the mod loading system and display.
+
+
+Failure details:
+Failed to locate a primary monitor.
+glfwGetPrimaryMonitor failed.
+
+
+If you click yes, we will try and open https://links.neoforged.net/early-display-errors in your default browser

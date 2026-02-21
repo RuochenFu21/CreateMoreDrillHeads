@@ -15,9 +15,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.client.model.generators.ModelBuilder;
-import net.neoforged.fml.DistExecutor;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.client.model.generators.ModelBuilder;
 
 import static com.forsteri.createmoredrillheads.entry.TieredDrillRegistration.REGISTRATE;
 import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
@@ -80,7 +79,9 @@ public class TippedDrillRegisterer {
                 .visual(() -> OrientedRotatingVisual.of(head), false)
                 .validBlock(block);
 
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> RendererLoader.addRenderer(unregistered, head));
+        if (FMLEnvironment.dist.isClient()) {
+            RendererLoader.addRenderer(unregistered, head);
+        }
 
         tile = unregistered.register();
     }
