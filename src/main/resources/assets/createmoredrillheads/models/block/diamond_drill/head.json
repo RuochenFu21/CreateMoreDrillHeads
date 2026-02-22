@@ -1,8 +1,0 @@
-{
-  "parent": "createmoredrillheads:block/abstract/head",
-  "textures": {
-    "10": "minecraft:block/diamond_block",
-    "2": "minecraft:block/diamond_block",
-    "7": "minecraft:block/diamond_block"
-  }
-}
