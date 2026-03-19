@@ -52,15 +52,11 @@ jobs:
           echo "$CHANGELOG" > changelog.md
 
       - name: Upload to CurseForge
+        if: ${{ vars.CURSEFORGE_PROJECT != '' && secrets.CURSEFORGE_TOKEN != '' }}
         env:
           CF_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
-          CF_PROJECT: "841298"
+          CF_PROJECT: ${{ vars.CURSEFORGE_PROJECT }}
         run: |
-          if [ -z "$CF_TOKEN" ]; then
-            echo "⚠️ CURSEFORGE_TOKEN is missing, skipping CurseForge upload."
-            exit 0
-          fi
-          
           METADATA=$(jq -n --arg cl "$(cat changelog.md)" --arg dn "${{ steps.meta.outputs.display_name }}" \
             '{changelog: $cl, changelogType: "markdown", displayName: $dn, gameVersions: [10236], releaseType: "release"}')
           
@@ -70,15 +66,11 @@ jobs:
                -F "file=@${{ steps.meta.outputs.jar_path }}"
 
       - name: Upload to Modrinth
+        if: ${{ vars.MODRINTH_PROJECT != '' && secrets.MODRINTH_TOKEN != '' }}
         env:
           MR_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
-          MR_PROJECT: "你的_MODRINTH_ID"
+          MR_PROJECT: ${{ vars.MODRINTH_PROJECT }}
         run: |
-          if [ -z "$MR_TOKEN" ]; then
-            echo "⚠️ MODRINTH_TOKEN is missing, skipping Modrinth upload."
-            exit 0
-          fi
-          
           METADATA=$(jq -n \
             --arg name "${{ steps.meta.outputs.display_name }}" \
             --arg ver "${{ steps.meta.outputs.mod_ver }}" \
