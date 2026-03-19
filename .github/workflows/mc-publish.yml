@@ -52,7 +52,7 @@ jobs:
           echo "$CHANGELOG" > changelog.md
 
       - name: Upload to CurseForge
-        if: ${{ vars.CURSEFORGE_PROJECT != '' && secrets.CURSEFORGE_TOKEN != '' }}
+        if: ${{ vars.CURSEFORGE_PROJECT != '' }}
         env:
           CF_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           CF_PROJECT: ${{ vars.CURSEFORGE_PROJECT }}
@@ -66,7 +66,7 @@ jobs:
                -F "file=@${{ steps.meta.outputs.jar_path }}"
 
       - name: Upload to Modrinth
-        if: ${{ vars.MODRINTH_PROJECT != '' && secrets.MODRINTH_TOKEN != '' }}
+        if: ${{ vars.MODRINTH_PROJECT != '' }}
         env:
           MR_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
           MR_PROJECT: ${{ vars.MODRINTH_PROJECT }}
