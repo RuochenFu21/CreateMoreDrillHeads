@@ -37,7 +37,7 @@ jobs:
           MOD_VER=$(echo "$FULL_VER" | cut -d'-' -f1)
           MC_VER=$(echo "$FULL_VER" | cut -d'-' -f2)
           
-          # 如果解析失败，回退到文件名解析 (e.g., createmoredrillheads-1.2.0-1.21.1.jar)
+          # 如果解析失败，回退到文件名解析
           if [ -z "$MC_VER" ]; then
             MC_VER=$(echo "$JAR_PATH" | grep -oE '[0-9]+\.[0-9]+(\.[0-9]+)?' | tail -n 1)
             MOD_VER=$(echo "$JAR_PATH" | sed "s/.*-\(.*\)-$MC_VER.jar/\1/")
@@ -79,29 +79,6 @@ jobs:
             exit 0
           fi
           
-          METADATA=$(jq -n \
-            --arg name "${{ steps.meta.outputs.display_name }}" \
-            --arg ver "${{ steps.meta.outputs.mod_ver }}" \
-            --arg cl "$(cat changelog.md)" \
-            --arg pid "${MR_PROJECT}" \
-            --arg mc "${{ steps.meta.outputs.mc_ver }}" \
-            '{
-              name: $name,
-              version_number: $ver,
-              changelog: $cl,
-              game_versions: [$mc],
-              version_type: "release",
-              loaders: ["neoforge"],
-              project_id: $pid,
-              file_parts: ["file"]
-            }')
-
-          curl -X POST "https://api.modrinth.com/v2/version" \
-               -H "Authorization: ${MR_TOKEN}" \
-               -F "data=${METADATA}" \
-               -F "file=@${{ steps.meta.outputs.jar_path }}"
-          MR_PROJECT: "你的_MODRINTH_ID" # 如果有具体的 Modrinth ID 请修改
-        run: |
           METADATA=$(jq -n \
             --arg name "${{ steps.meta.outputs.display_name }}" \
             --arg ver "${{ steps.meta.outputs.mod_ver }}" \
