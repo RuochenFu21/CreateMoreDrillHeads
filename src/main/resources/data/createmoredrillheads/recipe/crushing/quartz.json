@@ -1,0 +1,18 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "minecraft:quartz"
+    }
+  ],
+  "results": [
+    {
+      "id": "createmoredrillheads:quartz_dusts"
+    },
+    {
+      "id": "createmoredrillheads:quartz_dusts",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 150
+}

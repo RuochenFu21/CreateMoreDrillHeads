@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    "AIA",
+    " C "
+  ],
+  "key": {
+    "C": {
+      "item": "create:andesite_casing"
+    },
+    "A": {
+      "tag": "minecraft:planks"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "T": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "id": "createmoredrillheads:wooden_drill"
+  }
+}

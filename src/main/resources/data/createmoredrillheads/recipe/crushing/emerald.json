@@ -1,0 +1,18 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "minecraft:emerald"
+    }
+  ],
+  "results": [
+    {
+      "id": "createmoredrillheads:emerald_dusts"
+    },
+    {
+      "id": "createmoredrillheads:emerald_dusts",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 150
+}

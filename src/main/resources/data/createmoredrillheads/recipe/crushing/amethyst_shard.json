@@ -1,0 +1,18 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "minecraft:amethyst_shard"
+    }
+  ],
+  "results": [
+    {
+      "id": "createmoredrillheads:amethyst_dusts"
+    },
+    {
+      "id": "createmoredrillheads:amethyst_dusts",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 150
+}

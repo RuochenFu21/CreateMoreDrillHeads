@@ -34,7 +34,7 @@ public enum DrillTips {
         return stack;
     }),
     SILK_TOUCH("amethyst_dusts", ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dusts/amethyst")), () -> {
-        ItemStack stack = Items.AIR.getDefaultInstance();
+        ItemStack stack = Items.STICK.getDefaultInstance();
         applyEnchantment(stack, Enchantments.SILK_TOUCH, 1);
         return stack;
     });

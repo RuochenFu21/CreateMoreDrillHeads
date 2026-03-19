@@ -18,15 +18,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.UnaryOperator;
 
 public class DrillTipApplicationRecipeProvider extends ProcessingRecipeGen {
-    public DrillTipApplicationRecipeProvider(PackOutput p_125973_, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(p_125973_, lookupProvider);
-    }
-
-    @Override
-    protected AllRecipeTypes getRecipeType() {
-        return AllRecipeTypes.DEPLOYING;
-    }
-
     {
         for (Tiers tier : Tiers.values()) {
             for (DrillTips tip : DrillTips.values()) {
@@ -39,9 +30,18 @@ public class DrillTipApplicationRecipeProvider extends ProcessingRecipeGen {
                         b -> b.require(tippedDrillRegistererMap.get(DrillTips.NONE).getBlock().get())
                                 .require(tip.getMaterial())
                                 .output(tippedDrillRegistererMap.get(tip).getBlock().get())
-                        );
+                );
             }
         }
+    }
+
+    public DrillTipApplicationRecipeProvider(PackOutput generator, CompletableFuture<HolderLookup.Provider> registries) {
+        super(generator, registries);
+    }
+
+    @Override
+    protected AllRecipeTypes getRecipeType() {
+        return AllRecipeTypes.DEPLOYING;
     }
 
     <T extends ProcessingRecipe<?>> void create(String name,

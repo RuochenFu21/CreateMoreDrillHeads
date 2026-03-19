@@ -7,3 +7,5 @@
 /run-data
 /.idea
 Icon*
+.cache
+/runs

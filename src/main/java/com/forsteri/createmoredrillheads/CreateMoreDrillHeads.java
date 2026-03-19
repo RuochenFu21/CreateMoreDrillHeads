@@ -13,15 +13,11 @@ public class CreateMoreDrillHeads {
     public static final String MOD_ID = "createmoredrillheads";
 
     public CreateMoreDrillHeads(IEventBus modEventBus) {
-        // 1. Initialize registrations first (this calls REGISTRATE.block/item)
-        TieredDrillRegistration.register();
-
-        // 2. Set up the Creative Tab
-        REGISTRATE.defaultCreativeTab("createmoredrillheads");
-        TieredDrillTab.register(modEventBus);
-
-        // 3. ONLY THEN register the event listeners
         REGISTRATE.registerEventListeners(modEventBus);
+        REGISTRATE.defaultCreativeTab("createmoredrillheads");
+
+        TieredDrillTab.register(modEventBus);
+        TieredDrillRegistration.register();
 
         // 4. Lang etc
         TieredDrillLang.register();
