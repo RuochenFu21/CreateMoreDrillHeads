@@ -81,6 +81,7 @@ jobs:
               name: $name,
               version_number: $ver,
               changelog: $cl,
+              dependencies: [],
               game_versions: [$mc],
               version_type: "release",
               loaders: ["neoforge"],
