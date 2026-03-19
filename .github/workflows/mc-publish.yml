@@ -49,18 +49,18 @@ jobs:
           echo "mod_ver=$MOD_VER" >> $GITHUB_OUTPUT
           echo "display_name=$DISPLAY_NAME" >> $GITHUB_OUTPUT
           
-          # 检查 Token 是否存在并导出标志 (使用 ${{ }} 直接在 Shell 中注入)
-          if [ -n "${{ secrets.CURSEFORGE_TOKEN }}" ]; then echo "has_cf=true" >> $GITHUB_OUTPUT; else echo "has_cf=false" >> $GITHUB_OUTPUT; fi
-          if [ -n "${{ secrets.MODRINTH_TOKEN }}" ]; then echo "has_mr=true" >> $GITHUB_OUTPUT; else echo "has_mr=false" >> $GITHUB_OUTPUT; fi
-          
           echo "$CHANGELOG" > changelog.md
 
       - name: Upload to CurseForge
-        if: steps.meta.outputs.has_cf == 'true'
         env:
           CF_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           CF_PROJECT: "841298"
         run: |
+          if [ -z "$CF_TOKEN" ]; then
+            echo "⚠️ CURSEFORGE_TOKEN is missing, skipping CurseForge upload."
+            exit 0
+          fi
+          
           METADATA=$(jq -n --arg cl "$(cat changelog.md)" --arg dn "${{ steps.meta.outputs.display_name }}" \
             '{changelog: $cl, changelogType: "markdown", displayName: $dn, gameVersions: [10236], releaseType: "release"}')
           
@@ -70,9 +70,36 @@ jobs:
                -F "file=@${{ steps.meta.outputs.jar_path }}"
 
       - name: Upload to Modrinth
-        if: steps.meta.outputs.has_mr == 'true'
         env:
           MR_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          MR_PROJECT: "你的_MODRINTH_ID"
+        run: |
+          if [ -z "$MR_TOKEN" ]; then
+            echo "⚠️ MODRINTH_TOKEN is missing, skipping Modrinth upload."
+            exit 0
+          fi
+          
+          METADATA=$(jq -n \
+            --arg name "${{ steps.meta.outputs.display_name }}" \
+            --arg ver "${{ steps.meta.outputs.mod_ver }}" \
+            --arg cl "$(cat changelog.md)" \
+            --arg pid "${MR_PROJECT}" \
+            --arg mc "${{ steps.meta.outputs.mc_ver }}" \
+            '{
+              name: $name,
+              version_number: $ver,
+              changelog: $cl,
+              game_versions: [$mc],
+              version_type: "release",
+              loaders: ["neoforge"],
+              project_id: $pid,
+              file_parts: ["file"]
+            }')
+
+          curl -X POST "https://api.modrinth.com/v2/version" \
+               -H "Authorization: ${MR_TOKEN}" \
+               -F "data=${METADATA}" \
+               -F "file=@${{ steps.meta.outputs.jar_path }}"
           MR_PROJECT: "你的_MODRINTH_ID" # 如果有具体的 Modrinth ID 请修改
         run: |
           METADATA=$(jq -n \
