@@ -22,9 +22,6 @@ jobs:
 
       - name: Parse Metadata
         id: meta
-        env:
-          CF_TOKEN_VAL: ${{ secrets.CURSEFORGE_TOKEN }}
-          MR_TOKEN_VAL: ${{ secrets.MODRINTH_TOKEN }}
         run: |
           RAW_MSG="${{ github.event.head_commit.message }}"
           CHANGELOG=$(echo "$RAW_MSG" | sed '1d')
@@ -52,9 +49,9 @@ jobs:
           echo "mod_ver=$MOD_VER" >> $GITHUB_OUTPUT
           echo "display_name=$DISPLAY_NAME" >> $GITHUB_OUTPUT
           
-          # 检查 Token 是否存在并导出标志 (Bash 变量引用)
-          if [ -n "$CF_TOKEN_VAL" ]; then echo "has_cf=true" >> $GITHUB_OUTPUT; else echo "has_cf=false" >> $GITHUB_OUTPUT; fi
-          if [ -n "$MR_TOKEN_VAL" ]; then echo "has_mr=true" >> $GITHUB_OUTPUT; else echo "has_mr=false" >> $GITHUB_OUTPUT; fi
+          # 检查 Token 是否存在并导出标志 (使用 ${{ }} 直接在 Shell 中注入)
+          if [ -n "${{ secrets.CURSEFORGE_TOKEN }}" ]; then echo "has_cf=true" >> $GITHUB_OUTPUT; else echo "has_cf=false" >> $GITHUB_OUTPUT; fi
+          if [ -n "${{ secrets.MODRINTH_TOKEN }}" ]; then echo "has_mr=true" >> $GITHUB_OUTPUT; else echo "has_mr=false" >> $GITHUB_OUTPUT; fi
           
           echo "$CHANGELOG" > changelog.md
 
