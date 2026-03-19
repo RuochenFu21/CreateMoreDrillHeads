@@ -42,7 +42,7 @@ jobs:
           echo "$CHANGELOG" > changelog.md
 
       - name: Upload to CurseForge
-        if: secrets.CURSEFORGE_TOKEN != ''
+        if: ${{ secrets.CURSEFORGE_TOKEN != '' }}
         env:
           CF_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           CF_PROJECT: "841298"
@@ -56,7 +56,7 @@ jobs:
                -F "file=@${{ steps.meta.outputs.jar_path }}"
 
       - name: Upload to Modrinth
-        if: secrets.MODRINTH_TOKEN != ''
+        if: ${{ secrets.MODRINTH_TOKEN != '' }}
         env:
           MR_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
           MR_PROJECT: "你的_MODRINTH_ID" # 如果有具体的 Modrinth ID 请修改
